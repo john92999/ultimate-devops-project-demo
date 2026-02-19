@@ -8,7 +8,7 @@ pipeline{
         }
         stage ('Build the docker'){
             steps{
-                dir ('ultimate-devops-project-demo/src/product-catalog') {
+                dir ('src/product-catalog') {
                 sh 'docker build -t pjwesley7/product-catalog:v1 .'
                 }
             }
