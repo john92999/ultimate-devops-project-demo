@@ -6,6 +6,6 @@ RUN go build -o product-catalog .
 FROM alpine as runner
 ENV PRODUCT_CATALOG_PORT 8088
 WORKDIR /usr/src/app
-COPY --from=builder /go/bin/product-catalog ./
+COPY --from=builder /usr/src/app/product-catalog ./
 COPY ./products ./products
 ENTRYPOINT ["./product-catalog"]
