@@ -8,14 +8,14 @@ pipeline{
         }
         stage ('Build the docker'){
             steps{
-                dir ('src/product-catalog') {
-                sh 'docker build -t pjwesley7/product-catalog:v1 .'
+                dir ('src/ad') {
+                sh 'docker build -t pjwesley7/adservice:v1 .'
                 }
             }
         }
         stage('Run the buit image'){
             steps{
-                sh 'docker run pjwesley7/product-catalog:v1'
+                sh 'docker run -d -P pjwesley7/adservice:v1'
             }
         }
     }
