@@ -3,17 +3,14 @@ pipeline{
     stages {
         stage ('Source code download'){
             steps{
-                git url: "https://github.com/john92999/ultimate-devops-project-demo.git", branch "main"
-            }
-        }
-        stage ('change the directory'){
-            steps{
-                sh 'cd ultimate-devops-project-demo/src/product-catalog'
+                git url: "https://github.com/john92999/ultimate-devops-project-demo.git", branch: "main"
             }
         }
         stage ('Build the docker'){
             steps{
+                dir ('ultimate-devops-project-demo/src/product-catalog') {
                 sh 'docker build -t pjwesley7/product-catalog:v1 .'
+                }
             }
         }
         stage('Run the buit image'){
